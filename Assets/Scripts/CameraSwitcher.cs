@@ -24,8 +24,11 @@ public class CameraSwitcher : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
+
+    }
+
+    public void SwitchToNextCam() 
+    {
             // Disable current camera GameObject and Camera component
             cameras[currentCameraIndex].gameObject.SetActive(false);
             cameras[currentCameraIndex].enabled = false;
@@ -38,14 +41,7 @@ public class CameraSwitcher : MonoBehaviour
             cameras[currentCameraIndex].enabled = true;
 
             Debug.Log("Switched to camera: " + cameras[currentCameraIndex].name);
-
-            // Example: disable all canvases when switching
-            DisableCanvasAtIndex(0);
-            EnableCanvasAtIndex(1);
-        }
     }
-
-    // 🔹 Public methods you can call from other scripts
 
     public void DisableAllCanvases()
     {

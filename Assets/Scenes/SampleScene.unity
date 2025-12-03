@@ -128,6 +128,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9768708018621914, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
   m_PrefabInstance: {fileID: 1533312102}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &36459039 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 9008639450965414728, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
+  m_PrefabInstance: {fileID: 1533312102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &54524620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,9 +1589,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2357346639182534045, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
   m_PrefabInstance: {fileID: 1533312102}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &97349066 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5240427783320905118, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
+  m_PrefabInstance: {fileID: 1533312102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &110077751 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 191709268918262961, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
+  m_PrefabInstance: {fileID: 1533312102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &110077753 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 6047410157177402665, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
   m_PrefabInstance: {fileID: 1533312102}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &122969313
@@ -1760,6 +1775,11 @@ CanvasRenderer:
 --- !u!1 &136194917 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9164064061942289915, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
+  m_PrefabInstance: {fileID: 1533312102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &136194919 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1805842742076100677, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
   m_PrefabInstance: {fileID: 1533312102}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &164929249
@@ -4199,6 +4219,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4652612179501817365, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
   m_PrefabInstance: {fileID: 1533312102}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &349849653 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 7678540339678169146, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
+  m_PrefabInstance: {fileID: 1533312102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &420374457
 GameObject:
   m_ObjectHideFlags: 0
@@ -6524,6 +6549,11 @@ Mesh:
 --- !u!1 &535760951 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8090840465187766768, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
+  m_PrefabInstance: {fileID: 1533312102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &535760953 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 4098152697237659644, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
   m_PrefabInstance: {fileID: 1533312102}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &560376593
@@ -18748,6 +18778,63 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1229454648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1229454650}
+  - component: {fileID: 1229454649}
+  m_Layer: 0
+  m_Name: Enemy Detection Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1229454649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229454648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7f9f2c30f62154f968d015e387d4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positions:
+  - {fileID: 1874340509}
+  - {fileID: 136194919}
+  - {fileID: 535760953}
+  - {fileID: 349849653}
+  - {fileID: 1725151580}
+  - {fileID: 97349066}
+  - {fileID: 1863843067}
+  - {fileID: 110077753}
+  - {fileID: 36459039}
+  enemy: {fileID: 1567616317}
+  player: {fileID: 1180306151}
+  cameraSwitcher: {fileID: 963194230}
+--- !u!4 &1229454650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229454648}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1297239652
 GameObject:
   m_ObjectHideFlags: 0
@@ -19996,6 +20083,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6552734946534664827, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
   m_PrefabInstance: {fileID: 1533312102}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1725151580 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8023227359272869286, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
+  m_PrefabInstance: {fileID: 1533312102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1755217872
 Mesh:
   m_ObjectHideFlags: 0
@@ -20166,9 +20258,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5838439546696273772, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
   m_PrefabInstance: {fileID: 1533312102}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1863843067 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 4717596463995589706, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
+  m_PrefabInstance: {fileID: 1533312102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1874340507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7769023743269646933, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
+  m_PrefabInstance: {fileID: 1533312102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1874340509 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5685946030462056014, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
   m_PrefabInstance: {fileID: 1533312102}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &1878711032
@@ -22946,3 +23048,4 @@ SceneRoots:
   - {fileID: 1139031523}
   - {fileID: 622085315}
   - {fileID: 1567616317}
+  - {fileID: 1229454650}
