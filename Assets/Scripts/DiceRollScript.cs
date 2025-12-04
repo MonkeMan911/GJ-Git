@@ -7,6 +7,7 @@ public class DiceRollScript : MonoBehaviour
 {
     public Text diceOutcomeText;
     public int diceOutcomeNumber;
+    public int diceMaxNumber;
     void Start()
     {
         diceOutcomeNumber = 0;
@@ -19,7 +20,7 @@ public class DiceRollScript : MonoBehaviour
     }
     public void DiceRoll() 
     { 
-        diceOutcomeNumber = Random.Range(1, 6);
+        diceOutcomeNumber = Random.Range(1, diceMaxNumber);
         diceOutcomeText.text = diceOutcomeNumber.ToString();
     }
 }
