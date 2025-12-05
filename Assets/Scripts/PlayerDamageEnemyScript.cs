@@ -6,39 +6,52 @@ public class PlayerDamageEnemyScript : MonoBehaviour
 {
     public float damageDone;
     [SerializeField] private DiceRollScript diceRollScript;
-    private bool hasDamaged = false;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    // Make this non-serialized so the Inspector can’t accidentally keep it true.
+    private bool hasDamaged = false;
+
     void Update()
     {
+        // Skip once we've already applied damage this roll/frame
         if (hasDamaged) return;
+
+        // Guard against a missing reference to diceRollScript
+        if (diceRollScript == null)
         {
-            if (diceRollScript.diceOutcomeNumber >= 15)
-            {
-                damageDone += 3;
-                hasDamaged = true;
-            }
-            if (diceRollScript.diceOutcomeNumber >= 10)
-            {
-                damageDone += 2;
-
-            }
-            if (diceRollScript.diceOutcomeNumber >= 5)
-            {
-                damageDone++;
-
-            }
-            else
-                damageDone += 0;
-
+            Debug.LogWarning("DiceRollScript reference is missing on PlayerDamageEnemyScript.");
+            return;
         }
-    }
-    public void stuff() 
-    {
 
+        int roll = diceRollScript.diceOutcomeNumber;
+        float before = damageDone;
+
+        if (roll >= 15)
+        {
+            damageDone += 3f;
+            Debug.Log($"Roll {roll}: +3 damage (total {before} -> {damageDone})");
+        }
+        else if (roll >= 10)
+        {
+            damageDone += 2f;
+            Debug.Log($"Roll {roll}: +2 damage (total {before} -> {damageDone})");
+        }
+        else if (roll >= 5)
+        {
+            damageDone += 1f;
+            Debug.Log($"Roll {roll}: +1 damage (total {before} -> {damageDone})");
+        }
+        else
+        {
+            // No damage
+            Debug.Log($"Roll {roll}: +0 damage (total {before} -> {damageDone})");
+        }
+
+        hasDamaged = true; // prevent re-applying until reset
+    }
+
+    // Call this when a NEW dice roll starts or completes, before evaluating again.
+    public void ResetDamageFlag()
+    {
+        hasDamaged = false;
     }
 }
