@@ -1,39 +1,41 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpriteChanger : MonoBehaviour
 {
-    [SerializeField] private Sprite newSprite;      
-    [SerializeField] private Sprite defaultSprite;
+    [SerializeField] private Texture newSprite;
+    [SerializeField] private Texture defaultSprite;
 
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private RawImage rawImage;
 
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (rawImage == null)
+            rawImage = GetComponent<RawImage>();
 
-        if (spriteRenderer == null)
+        if (rawImage == null)
         {
-            Debug.LogError("No SpriteRenderer found on this GameObject.");
+            Debug.LogError("No RawImage found on this GameObject.");
         }
     }
 
-    public void ChangeToNewSprite()
+    public void ChangeToNewTexture()
     {
-        if (spriteRenderer != null && newSprite != null)
+        if (rawImage != null && newSprite != null)
         {
-            spriteRenderer.sprite = newSprite;
+            rawImage.texture = newSprite;
         }
         else
         {
-            Debug.LogWarning("SpriteRenderer or newSprite is missing.");
+            Debug.LogWarning("RawImage or newSprite is missing.");
         }
     }
 
-    public void RevertToDefaultSprite()
+    public void RevertToDefaultTexture()
     {
-        if (spriteRenderer != null && defaultSprite != null)
+        if (rawImage != null && defaultSprite != null)
         {
-            spriteRenderer.sprite = defaultSprite;
+            rawImage.texture = defaultSprite;
         }
     }
 }
