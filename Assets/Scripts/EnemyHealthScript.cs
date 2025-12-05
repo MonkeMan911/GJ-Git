@@ -1,19 +1,19 @@
+
 using UnityEngine;
 
 public class EnemyHealthScript : MonoBehaviour
 {
     [SerializeField] private PlayerDamageEnemyScript playerDamageEnemy;
-    [SerializeField] private SpriteChanger[] spriteChangers; // assign in Inspector
-
-    [SerializeField] private float maxHealth = 5f;
-    [SerializeField] private float EnemyHealth = 5f;
+    [SerializeField] private SpriteChanger[] spriteChangers; // Assign in Inspector
+    [SerializeField] private int maxHealth = 5;              // integer max (1 UI per HP)
+    [SerializeField] private int EnemyHealth = 5;            // integer current HP
 
     private bool damagedEnemy = false;
 
     void Awake()
     {
-        // Make sure starting health is valid
-        EnemyHealth = Mathf.Clamp(EnemyHealth, 0f, maxHealth);
+        EnemyHealth = Mathf.Clamp(EnemyHealth, 0, maxHealth);
+        UpdateVisualsByHealthDiscrete(); // initialize UI
     }
 
     void Update()
@@ -24,7 +24,7 @@ public class EnemyHealthScript : MonoBehaviour
 
         if (damage > 0f)
         {
-            ApplyDamage(damage);
+            ApplyDamage(Mathf.RoundToInt(damage)); // round to nearest whole HP
         }
         else
         {
@@ -37,44 +37,43 @@ public class EnemyHealthScript : MonoBehaviour
         playerDamageEnemy.ResetDamageFlag();
     }
 
-    private void ApplyDamage(float amount)
+    private void ApplyDamage(int amount)
     {
-        float before = EnemyHealth;
-
-        // 1) Subtract damage and clamp
-        EnemyHealth = Mathf.Max(EnemyHealth - amount, 0f);
-
-        // 2) >>> PLACE YOUR TWO LINES HERE <<<
-        // Map current health to the proper UI index and change only that one
-        int currentSpriteIndex = HealthToIndex(EnemyHealth, maxHealth, spriteChangers.Length);
-        ApplyChangeToIndex(currentSpriteIndex);
-
+        int before = EnemyHealth;
+        EnemyHealth = Mathf.Clamp(EnemyHealth - amount, 0, maxHealth);
+        UpdateVisualsByHealthDiscrete();
         Debug.Log($"Enemy took {amount} damage. Health: {before} -> {EnemyHealth}");
 
-        if (EnemyHealth <= 0f)
-        {
+        if (EnemyHealth <= 0)
             HandleDeath();
-        }
     }
 
-    /// Maps health percentage to an index in spriteChangers.
-    /// 100% health -> index 0; 0% health -> index count-1
-    private int HealthToIndex(float health, float max, int count)
-    {
-        if (count <= 0) return -1;
-
-        float damagedFraction = 1f - (health / max);           // 0 at full, 1 at zero health
-        int idx = Mathf.Clamp(Mathf.FloorToInt(damagedFraction * count), 0, count - 1);
-        return idx;
-    }
-
-    private void ApplyChangeToIndex(int index)
+    /// Updates UI segments left-to-right:
+    /// indices [0..EnemyHealth-1] = healthy, [EnemyHealth..maxHealth-1] = damaged.
+    private void UpdateVisualsByHealthDiscrete()
     {
         if (spriteChangers == null || spriteChangers.Length == 0) return;
-        if (index < 0 || index >= spriteChangers.Length) return;
 
-        var changer = spriteChangers[index];
-        changer?.ChangeToNewTexture();
+        // Ensure array length matches maxHealth (recommended).
+        int count = Mathf.Min(spriteChangers.Length, maxHealth);
+
+        for (int i = 0; i < count; i++)
+        {
+            var changer = spriteChangers[i];
+            if (changer == null) continue;
+
+            bool isHealthy = i < EnemyHealth;
+
+            // If defaultSprite is HEALTHY and newSprite is DAMAGED:
+            if (isHealthy) changer.RevertToDefaultTexture(); else changer.ChangeToNewTexture();
+
+            // If your setup is the opposite (newSprite = healthy), swap the calls:
+            // if (isHealthy) changer.ChangeToNewTexture(); else changer.RevertToDefaultTexture();
+        }
+
+        // Optional: if array longer than maxHealth, mark extras as damaged or keep default
+        for (int i = maxHealth; i < spriteChangers.Length; i++)
+            spriteChangers[i]?.RevertToDefaultTexture(); // or ChangeToNewTexture() per your design
     }
 
     public void FlagApplyDamageOnce() => damagedEnemy = true;
@@ -84,11 +83,12 @@ public class EnemyHealthScript : MonoBehaviour
         if (spriteChangers == null) return;
         foreach (var changer in spriteChangers)
             changer?.RevertToDefaultTexture();
+        EnemyHealth = maxHealth;
     }
 
     private void HandleDeath()
     {
-        // TODO: disable collider, play death animation, destroy, etc.
         Debug.Log("Enemy died.");
+        // TODO: disable collider, play animation, destroy, etc.
     }
 }
