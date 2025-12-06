@@ -252,6 +252,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1846739735}
+        m_TargetAssemblyTypeName: PlayerHealthScript, Assembly-CSharp
+        m_MethodName: FlagApplyDamageOnce
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &76358122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,7 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b04b77eb58d7f5469e06718d91d7ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panels:
+  mainPanels:
   - {fileID: 221635769}
   - {fileID: 1629821335}
   - {fileID: 1109826535}
@@ -623,6 +635,13 @@ MonoBehaviour:
   - {fileID: 472437166}
   - {fileID: 259746964}
   - {fileID: 867107464}
+  hidePanels:
+  - {fileID: 76358119}
+  - {fileID: 1122046539}
+  - {fileID: 861729398}
+  - {fileID: 2004566631}
+  - {fileID: 1311243283}
+  - {fileID: 1060439580}
 --- !u!1 &221635769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,6 +1746,8 @@ GameObject:
   - component: {fileID: 626794497}
   - component: {fileID: 626794499}
   - component: {fileID: 626794498}
+  - component: {fileID: 626794501}
+  - component: {fileID: 626794500}
   m_Layer: 5
   m_Name: Player Heart 2
   m_TagString: Untagged
@@ -1788,6 +1809,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626794496}
   m_CullTransparentMesh: 1
+--- !u!212 &626794500
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626794496}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 8964779d3bbf5bb47b4acbf4eccab574, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.75, y: 0.72}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &626794501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626794496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d5028705222d3499065cf0df052c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 2800000, guid: 9bedb90fde41047478165022d5890d7d, type: 3}
+  defaultSprite: {fileID: 2800000, guid: 8964779d3bbf5bb47b4acbf4eccab574, type: 3}
+  rawImage: {fileID: 626794498}
 --- !u!1 &665358200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2504,6 +2592,8 @@ GameObject:
   - component: {fileID: 844027316}
   - component: {fileID: 844027318}
   - component: {fileID: 844027317}
+  - component: {fileID: 844027320}
+  - component: {fileID: 844027319}
   m_Layer: 5
   m_Name: Player Heart 3
   m_TagString: Untagged
@@ -2565,6 +2655,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844027315}
   m_CullTransparentMesh: 1
+--- !u!212 &844027319
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844027315}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 8964779d3bbf5bb47b4acbf4eccab574, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.75, y: 0.72}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &844027320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844027315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d5028705222d3499065cf0df052c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 2800000, guid: 9bedb90fde41047478165022d5890d7d, type: 3}
+  defaultSprite: {fileID: 2800000, guid: 8964779d3bbf5bb47b4acbf4eccab574, type: 3}
+  rawImage: {fileID: 844027317}
 --- !u!1 &861729398
 GameObject:
   m_ObjectHideFlags: 0
@@ -4785,7 +4942,8 @@ MonoBehaviour:
   - {fileID: 1673654020}
   - {fileID: 1913594324}
   - {fileID: 2068559035}
-  canvasDisabler: {fileID: 0}
+  pannelHideNShow: {fileID: 164929251}
+  enemy3D: {fileID: 1567616313}
   maxHealth: 5
   EnemyHealth: 5
 --- !u!1 &1297239652
@@ -5411,6 +5569,8 @@ GameObject:
   - component: {fileID: 1407207190}
   - component: {fileID: 1407207192}
   - component: {fileID: 1407207191}
+  - component: {fileID: 1407207194}
+  - component: {fileID: 1407207193}
   m_Layer: 5
   m_Name: Player Heart 5
   m_TagString: Untagged
@@ -5472,6 +5632,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407207189}
   m_CullTransparentMesh: 1
+--- !u!212 &1407207193
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407207189}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 8964779d3bbf5bb47b4acbf4eccab574, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.75, y: 0.72}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1407207194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407207189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d5028705222d3499065cf0df052c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 2800000, guid: 9bedb90fde41047478165022d5890d7d, type: 3}
+  defaultSprite: {fileID: 2800000, guid: 8964779d3bbf5bb47b4acbf4eccab574, type: 3}
+  rawImage: {fileID: 1407207191}
 --- !u!43 &1478005845
 Mesh:
   m_ObjectHideFlags: 0
@@ -6759,6 +6986,60 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1846739734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1846739736}
+  - component: {fileID: 1846739735}
+  m_Layer: 0
+  m_Name: Player Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1846739735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846739734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9d19eaaa638164f88732675cbb67fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDamageEnemy: {fileID: 622085316}
+  spriteChangers:
+  - {fileID: 1951728470}
+  - {fileID: 626794501}
+  - {fileID: 844027320}
+  - {fileID: 2067731043}
+  - {fileID: 1407207194}
+  pannelHideNShow: {fileID: 164929251}
+  maxHealth: 5
+  PlayerHealth: 5
+--- !u!4 &1846739736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846739734}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1045.7644, y: 600.1048, z: -1114.8627}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1863843065 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5838439546696273772, guid: 9b0c6bc0ce754ee4fb16c74a13edf879, type: 3}
@@ -7261,6 +7542,8 @@ GameObject:
   - component: {fileID: 1951728466}
   - component: {fileID: 1951728468}
   - component: {fileID: 1951728467}
+  - component: {fileID: 1951728470}
+  - component: {fileID: 1951728469}
   m_Layer: 5
   m_Name: Player Heart 1
   m_TagString: Untagged
@@ -7322,6 +7605,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951728465}
   m_CullTransparentMesh: 1
+--- !u!212 &1951728469
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951728465}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 8964779d3bbf5bb47b4acbf4eccab574, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.75, y: 0.72}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1951728470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951728465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d5028705222d3499065cf0df052c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 2800000, guid: 9bedb90fde41047478165022d5890d7d, type: 3}
+  defaultSprite: {fileID: 2800000, guid: 8964779d3bbf5bb47b4acbf4eccab574, type: 3}
+  rawImage: {fileID: 1951728467}
 --- !u!1 &2004566631
 GameObject:
   m_ObjectHideFlags: 0
@@ -7738,6 +8088,8 @@ GameObject:
   - component: {fileID: 2067731039}
   - component: {fileID: 2067731041}
   - component: {fileID: 2067731040}
+  - component: {fileID: 2067731043}
+  - component: {fileID: 2067731042}
   m_Layer: 5
   m_Name: Player Heart 4
   m_TagString: Untagged
@@ -7799,6 +8151,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067731038}
   m_CullTransparentMesh: 1
+--- !u!212 &2067731042
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067731038}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 8964779d3bbf5bb47b4acbf4eccab574, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.75, y: 0.72}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &2067731043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067731038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d5028705222d3499065cf0df052c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 2800000, guid: 9bedb90fde41047478165022d5890d7d, type: 3}
+  defaultSprite: {fileID: 2800000, guid: 8964779d3bbf5bb47b4acbf4eccab574, type: 3}
+  rawImage: {fileID: 2067731040}
 --- !u!1 &2068559031
 GameObject:
   m_ObjectHideFlags: 0
@@ -12269,3 +12688,4 @@ SceneRoots:
   - {fileID: 622085315}
   - {fileID: 1567616317}
   - {fileID: 1229454650}
+  - {fileID: 1846739736}

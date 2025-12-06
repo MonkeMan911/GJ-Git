@@ -1,11 +1,13 @@
 
+using System.Collections;
 using UnityEngine;
 
 public class EnemyHealthScript : MonoBehaviour
 {
     [SerializeField] private PlayerDamageEnemyScript playerDamageEnemy;
     [SerializeField] private SpriteChanger[] spriteChangers;
-    [SerializeField] private CanvasDisabler canvasDisabler;
+    [SerializeField] private PannelHideNShowScript pannelHideNShow;
+    [SerializeField] private GameObject enemy3D;
     [SerializeField] private int maxHealth = 5;              
     [SerializeField] private int EnemyHealth = 5;            
 
@@ -46,7 +48,7 @@ public class EnemyHealthScript : MonoBehaviour
         Debug.Log($"Enemy took {amount} damage. Health: {before} -> {EnemyHealth}");
 
         if (EnemyHealth <= 0)
-            HandleDeath();
+            HandleEnemyDeath();
     }
 
     /// Updates UI segments left-to-right:
@@ -87,9 +89,17 @@ public class EnemyHealthScript : MonoBehaviour
         EnemyHealth = maxHealth;
     }
 
-    private void HandleDeath()
+    private void HandleEnemyDeath()
     {
         Debug.Log("Enemy died.");
-        canvasDisabler.EnableAtIndex(10);
+        pannelHideNShow.TogglePanel(9);
+        pannelHideNShow.DisableAllPanels();
+        enemy3D.SetActive(false);
+        StartCoroutine(NextLevelWait());
+    }
+    IEnumerator NextLevelWait() 
+    {
+        yield return new WaitForSeconds(1);
+        Debug.Log("Hid All Comps And Switched to Next Phase");
     }
 }
