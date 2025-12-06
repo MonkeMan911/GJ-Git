@@ -230,31 +230,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 622085316}
         m_TargetAssemblyTypeName: PlayerDamageEnemyScript, Assembly-CSharp
-        m_MethodName: ResetDamageFlag
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1229454651}
-        m_TargetAssemblyTypeName: EnemyHealthScript, Assembly-CSharp
-        m_MethodName: FlagApplyDamageOnce
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1846739735}
-        m_TargetAssemblyTypeName: PlayerHealthScript, Assembly-CSharp
-        m_MethodName: FlagApplyDamageOnce
+        m_MethodName: RollAndDamageEnemy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -642,6 +618,8 @@ MonoBehaviour:
   - {fileID: 2004566631}
   - {fileID: 1311243283}
   - {fileID: 1060439580}
+  - {fileID: 1969985497}
+  - {fileID: 2015531430}
 --- !u!1 &221635769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,6 +1662,7 @@ GameObject:
   - component: {fileID: 622085315}
   - component: {fileID: 622085314}
   - component: {fileID: 622085316}
+  - component: {fileID: 622085317}
   m_Layer: 0
   m_Name: Dice Manager
   m_TagString: Untagged
@@ -1735,7 +1714,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageDone: 0
   diceRollScript: {fileID: 622085314}
-  showDamageToEnemy: {fileID: 0}
+  showDamageToEnemy: {fileID: 1969985499}
+  enemy: {fileID: 1229454651}
+--- !u!114 &622085317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622085313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec52a96a32aaaf44a88184e21f42dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceRollButton: {fileID: 76358121}
 --- !u!1 &626794496
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,7 +4042,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2a950314dee4b4293fb7e9fb6ae30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 1229454651}
+  playerDamage: {fileID: 622085316}
   currentTurn: 0
+  battleStarted: 0
 --- !u!4 &1128245233
 Transform:
   m_ObjectHideFlags: 0
@@ -4164,8 +4160,10 @@ RectTransform:
   - {fileID: 76358120}
   - {fileID: 1122046540}
   - {fileID: 861729399}
+  - {fileID: 2015531431}
   - {fileID: 2004566632}
   - {fileID: 1311243284}
+  - {fileID: 1969985498}
   - {fileID: 1060439581}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4981,7 +4979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84e27cf42c74244eb663d82a2538bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDamageEnemy: {fileID: 622085316}
   playerScript: {fileID: 1846739735}
   spriteChangers:
   - {fileID: 884973822}
@@ -4991,6 +4988,7 @@ MonoBehaviour:
   - {fileID: 2068559035}
   pannelHideNShow: {fileID: 164929251}
   enemy3D: {fileID: 1567616313}
+  enemyDamageToPlayer: {fileID: 2015531432}
   maxHealth: 5
   EnemyHealth: 5
 --- !u!1 &1297239652
@@ -7062,7 +7060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9d19eaaa638164f88732675cbb67fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDamageEnemy: {fileID: 622085316}
   spriteChangers:
   - {fileID: 1951728470}
   - {fileID: 626794501}
@@ -7719,6 +7716,85 @@ MonoBehaviour:
   newSprite: {fileID: 2800000, guid: 9bedb90fde41047478165022d5890d7d, type: 3}
   defaultSprite: {fileID: 2800000, guid: 8964779d3bbf5bb47b4acbf4eccab574, type: 3}
   rawImage: {fileID: 1951728467}
+--- !u!1 &1969985497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1969985498}
+  - component: {fileID: 1969985500}
+  - component: {fileID: 1969985499}
+  m_Layer: 5
+  m_Name: E Damage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1969985498
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969985497}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1139031523}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.669, y: 0.707}
+  m_AnchorMax: {x: 0.777, y: 0.781}
+  m_AnchoredPosition: {x: 0.42861938, y: -0.021636963}
+  m_SizeDelta: {x: 0.23790002, y: 1.0175}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1969985499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969985497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6415094, g: 0.09380562, b: 0.09380562, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9e14c65d3a6df694085c47ea76a5f8a2, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 120
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1969985500
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969985497}
+  m_CullTransparentMesh: 1
 --- !u!1 &2004566631
 GameObject:
   m_ObjectHideFlags: 0
@@ -7920,6 +7996,85 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &2015531430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2015531431}
+  - component: {fileID: 2015531433}
+  - component: {fileID: 2015531432}
+  m_Layer: 5
+  m_Name: P Damage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2015531431
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015531430}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1139031523}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.2262476, y: 0.707}
+  m_AnchorMax: {x: 0.33383498, y: 0.781}
+  m_AnchoredPosition: {x: 0.25, y: 0.50875854}
+  m_SizeDelta: {x: 1.237915, y: 1.0174999}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2015531432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015531430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6415094, g: 0.09380562, b: 0.09380562, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9e14c65d3a6df694085c47ea76a5f8a2, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 120
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &2015531433
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015531430}
+  m_CullTransparentMesh: 1
 --- !u!1 &2038787528
 GameObject:
   m_ObjectHideFlags: 0

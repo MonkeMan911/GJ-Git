@@ -1,44 +1,41 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] private PlayerDamageEnemyScript playerDamageEnemy;
     [SerializeField] private PlayerScript playerScript;
     [SerializeField] private SpriteChanger[] spriteChangers;
     [SerializeField] private PannelHideNShowScript pannelHideNShow;
     [SerializeField] private GameObject enemy3D;
-    [SerializeField] private int maxHealth = 5;              
-    [SerializeField] private int EnemyHealth = 5;         
+    [SerializeField] private Text enemyDamageToPlayer;
+    [SerializeField] private int maxHealth = 5;
+    [SerializeField] private int EnemyHealth = 5;
+    public bool IsDead => isDead;
 
     private bool damagedEnemy = false;
+    private int pendingDamage = 0;
 
     void Awake()
     {
         EnemyHealth = Mathf.Clamp(EnemyHealth, 0, maxHealth);
-        UpdateVisualsByHealthDiscrete(); 
+        UpdateVisualsByHealthDiscrete();
     }
 
     void Update()
     {
         if (!damagedEnemy) return;
 
-        float damage = playerDamageEnemy.damageDone;
+        ApplyDamage(pendingDamage);
 
-        if (damage > 0f)
-        {
-            ApplyDamage(Mathf.RoundToInt(damage)); 
-        }
-        else
-        {
-            Debug.Log("No damage this roll.");
-        }
-
-        // Reset for next roll
         damagedEnemy = false;
-        playerDamageEnemy.damageDone = 0f;
-        playerDamageEnemy.ResetDamageFlag();
+        pendingDamage = 0;
+    }
+
+    public void FlagApplyDamageOnce(int amount)
+    {
+        damagedEnemy = true;
+        pendingDamage = amount;
     }
 
     private void ApplyDamage(int amount)
@@ -49,19 +46,20 @@ public class EnemyScript : MonoBehaviour
         Debug.Log($"Enemy took {amount} damage. Health: {before} -> {EnemyHealth}");
 
         if (EnemyHealth <= 0)
+        {
             HandleEnemyDeath();
+        }
         else
-            EnemyAttack(); // Enemy retaliates after being hit
+        {
+            TurnManager.Instance.EndPlayerTurn();
+        }
+
     }
 
-
-    /// Updates UI segments left-to-right:
-    /// indices [0..EnemyHealth-1] = healthy, [EnemyHealth..maxHealth-1] = damaged.
     private void UpdateVisualsByHealthDiscrete()
     {
         if (spriteChangers == null || spriteChangers.Length == 0) return;
 
-        // Ensure array length matches maxHealth (recommended).
         int count = Mathf.Min(spriteChangers.Length, maxHealth);
 
         for (int i = 0; i < count; i++)
@@ -70,20 +68,12 @@ public class EnemyScript : MonoBehaviour
             if (changer == null) continue;
 
             bool isHealthy = i < EnemyHealth;
-
-            // If defaultSprite is HEALTHY and newSprite is DAMAGED:
             if (isHealthy) changer.RevertToDefaultTexture(); else changer.ChangeToNewTexture();
-
-            // If your setup is the opposite (newSprite = healthy), swap the calls:
-            // if (isHealthy) changer.ChangeToNewTexture(); else changer.RevertToDefaultTexture();
         }
 
-        // Optional: if array longer than maxHealth, mark extras as damaged or keep default
         for (int i = maxHealth; i < spriteChangers.Length; i++)
-            spriteChangers[i]?.RevertToDefaultTexture(); // or ChangeToNewTexture() per your design
+            spriteChangers[i]?.RevertToDefaultTexture();
     }
-
-    public void FlagApplyDamageOnce() => damagedEnemy = true;
 
     public void RevertAllToDefault()
     {
@@ -93,32 +83,53 @@ public class EnemyScript : MonoBehaviour
         EnemyHealth = maxHealth;
     }
 
-    public void EnemyAttack() 
+    public void EnemyAttack()
     {
+        if (isDead) return;
         StartCoroutine(EnemyAttackPlayerWait());
     }
 
+
+    private bool isDead = false;
+
     private void HandleEnemyDeath()
     {
+        if (isDead) return;
+        isDead = true;
+
         Debug.Log("Enemy died.");
         pannelHideNShow.TogglePanel(9);
         pannelHideNShow.DisableAllPanels();
         enemy3D.SetActive(false);
         StartCoroutine(NextLevelWait());
     }
-    IEnumerator NextLevelWait() 
+
+
+    IEnumerator NextLevelWait()
     {
         yield return new WaitForSeconds(1);
         Debug.Log("Hid All Comps And Switched to Next Phase");
     }
+
     IEnumerator EnemyAttackPlayerWait()
     {
         yield return new WaitForSeconds(1);
 
-        playerScript.FlagApplyDamageOnce();
+        // ✅ Enemy rolls independently
+        int roll = Random.Range(1, 21); // 1–20
+        int enemyAttackDamage;
 
-        // End enemy turn → back to player
+        if (roll >= 15) enemyAttackDamage = 3;
+        else if (roll >= 10) enemyAttackDamage = 2;
+        else if (roll >= 5) enemyAttackDamage = 1;
+        else enemyAttackDamage = 0;
+
+        Debug.Log($"Enemy rolled {roll}: damage = {enemyAttackDamage}");
+
+        playerScript.FlagApplyDamageOnce(enemyAttackDamage);
+
         TurnManager.Instance.EndEnemyTurn();
-    }
 
+        enemyDamageToPlayer.text = "- " + enemyAttackDamage.ToString();
+    }
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InitiateFightScript : MonoBehaviour
 {
@@ -21,9 +21,11 @@ public class InitiateFightScript : MonoBehaviour
                 cameraSwitcher.SwitchToNextCam();
                 cameraSwitcher.EnableCanvasAtIndex(1);
                 Debug.Log("Enemy + Player is inside collider index: " + i + " (" + positions[i].name + ")");
-                hasSwitched = true; // prevent multiple calls
+                hasSwitched = true;
+                TurnManager.Instance.StartBattle();
                 break;
             }
+
         }
     }
 }
