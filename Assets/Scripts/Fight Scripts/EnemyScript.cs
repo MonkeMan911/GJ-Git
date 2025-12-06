@@ -1,15 +1,16 @@
-
+﻿
 using System.Collections;
 using UnityEngine;
 
-public class EnemyHealthScript : MonoBehaviour
+public class EnemyScript : MonoBehaviour
 {
     [SerializeField] private PlayerDamageEnemyScript playerDamageEnemy;
+    [SerializeField] private PlayerScript playerScript;
     [SerializeField] private SpriteChanger[] spriteChangers;
     [SerializeField] private PannelHideNShowScript pannelHideNShow;
     [SerializeField] private GameObject enemy3D;
     [SerializeField] private int maxHealth = 5;              
-    [SerializeField] private int EnemyHealth = 5;            
+    [SerializeField] private int EnemyHealth = 5;         
 
     private bool damagedEnemy = false;
 
@@ -49,7 +50,10 @@ public class EnemyHealthScript : MonoBehaviour
 
         if (EnemyHealth <= 0)
             HandleEnemyDeath();
+        else
+            EnemyAttack(); // Enemy retaliates after being hit
     }
+
 
     /// Updates UI segments left-to-right:
     /// indices [0..EnemyHealth-1] = healthy, [EnemyHealth..maxHealth-1] = damaged.
@@ -89,6 +93,11 @@ public class EnemyHealthScript : MonoBehaviour
         EnemyHealth = maxHealth;
     }
 
+    public void EnemyAttack() 
+    {
+        StartCoroutine(EnemyAttackPlayerWait());
+    }
+
     private void HandleEnemyDeath()
     {
         Debug.Log("Enemy died.");
@@ -102,4 +111,14 @@ public class EnemyHealthScript : MonoBehaviour
         yield return new WaitForSeconds(1);
         Debug.Log("Hid All Comps And Switched to Next Phase");
     }
+    IEnumerator EnemyAttackPlayerWait()
+    {
+        yield return new WaitForSeconds(1);
+
+        playerScript.FlagApplyDamageOnce();
+
+        // End enemy turn → back to player
+        TurnManager.Instance.EndEnemyTurn();
+    }
+
 }

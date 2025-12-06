@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerDamageEnemyScript : MonoBehaviour
 {
-    public float damageDone; // per-roll result
-    
+    public float damageDone;
     [SerializeField] private DiceRollScript diceRollScript;
+    [SerializeField] private Text showDamageToEnemy;
     private bool hasDamaged = false;
+    private bool hasRolled = false;
     void Update()
     {
         if (hasDamaged) return;
+        if (hasRolled) return;
         if (diceRollScript == null)
         {
             Debug.LogWarning("DiceRollScript reference missing.");
@@ -24,8 +27,14 @@ public class PlayerDamageEnemyScript : MonoBehaviour
         else damageDone = 0f;
 
         Debug.Log($"Roll {roll}: damage = {damageDone}");
-        hasDamaged = true; // lock until reset
+        showDamageToEnemy.text = damageDone.ToString();
+        hasDamaged = true;
+        hasRolled = true;
+
+        // End player turn
+        TurnManager.Instance.EndPlayerTurn();
     }
 
     public void ResetDamageFlag() => hasDamaged = false;
+    public void HasRolledPlayer() => hasRolled = false;
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealthScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private PlayerDamageEnemyScript playerDamageEnemy;
     [SerializeField] private SpriteChanger[] spriteChangers;

@@ -1735,6 +1735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageDone: 0
   diceRollScript: {fileID: 622085314}
+  showDamageToEnemy: {fileID: 0}
 --- !u!1 &626794496
 GameObject:
   m_ObjectHideFlags: 0
@@ -4019,6 +4020,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122046539}
   m_CullTransparentMesh: 1
+--- !u!1 &1128245231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1128245233}
+  - component: {fileID: 1128245232}
+  m_Layer: 0
+  m_Name: Fight Turn Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1128245232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128245231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2a950314dee4b4293fb7e9fb6ae30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTurn: 0
+--- !u!4 &1128245233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128245231}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1045.8666, y: 600.08655, z: -1114.8685}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1139031519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4936,6 +4982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDamageEnemy: {fileID: 622085316}
+  playerScript: {fileID: 1846739735}
   spriteChangers:
   - {fileID: 884973822}
   - {fileID: 309805075}
@@ -12689,3 +12736,4 @@ SceneRoots:
   - {fileID: 1567616317}
   - {fileID: 1229454650}
   - {fileID: 1846739736}
+  - {fileID: 1128245233}
