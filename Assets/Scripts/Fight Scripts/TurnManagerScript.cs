@@ -21,7 +21,6 @@ public class TurnManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -45,7 +44,7 @@ public class TurnManager : MonoBehaviour
         currentTurn = Turn.Enemy;
         Debug.Log("Enemy's turn!");
 
-        if (enemy != null && !enemy.IsDead) // ✅ only attack if alive
+        if (enemy != null && !enemy.IsDead) 
             enemy.EnemyAttack();
         else
             Debug.Log("Enemy is dead, skipping attack.");

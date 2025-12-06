@@ -18,6 +18,7 @@ public class EnemyScript : MonoBehaviour
 
     void Awake()
     {
+        isDead = false;
         EnemyHealth = Mathf.Clamp(EnemyHealth, 0, maxHealth);
         UpdateVisualsByHealthDiscrete();
     }
@@ -96,7 +97,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
-
+        StopAllCoroutines();
         Debug.Log("Enemy died.");
         pannelHideNShow.TogglePanel(9);
         pannelHideNShow.DisableAllPanels();
@@ -115,8 +116,9 @@ public class EnemyScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        // ✅ Enemy rolls independently
-        int roll = Random.Range(1, 21); // 1–20
+        if (isDead) yield break;
+
+        int roll = Random.Range(1, 21);
         int enemyAttackDamage;
 
         if (roll >= 15) enemyAttackDamage = 3;
