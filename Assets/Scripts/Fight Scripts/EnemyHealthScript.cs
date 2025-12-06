@@ -4,16 +4,17 @@ using UnityEngine;
 public class EnemyHealthScript : MonoBehaviour
 {
     [SerializeField] private PlayerDamageEnemyScript playerDamageEnemy;
-    [SerializeField] private SpriteChanger[] spriteChangers; // Assign in Inspector
-    [SerializeField] private int maxHealth = 5;              // integer max (1 UI per HP)
-    [SerializeField] private int EnemyHealth = 5;            // integer current HP
+    [SerializeField] private SpriteChanger[] spriteChangers;
+    [SerializeField] private CanvasDisabler canvasDisabler;
+    [SerializeField] private int maxHealth = 5;              
+    [SerializeField] private int EnemyHealth = 5;            
 
     private bool damagedEnemy = false;
 
     void Awake()
     {
         EnemyHealth = Mathf.Clamp(EnemyHealth, 0, maxHealth);
-        UpdateVisualsByHealthDiscrete(); // initialize UI
+        UpdateVisualsByHealthDiscrete(); 
     }
 
     void Update()
@@ -24,7 +25,7 @@ public class EnemyHealthScript : MonoBehaviour
 
         if (damage > 0f)
         {
-            ApplyDamage(Mathf.RoundToInt(damage)); // round to nearest whole HP
+            ApplyDamage(Mathf.RoundToInt(damage)); 
         }
         else
         {
@@ -89,6 +90,6 @@ public class EnemyHealthScript : MonoBehaviour
     private void HandleDeath()
     {
         Debug.Log("Enemy died.");
-        // TODO: disable collider, play animation, destroy, etc.
+        canvasDisabler.EnableAtIndex(10);
     }
 }
