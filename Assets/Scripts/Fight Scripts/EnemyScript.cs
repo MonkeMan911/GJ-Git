@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField] private PlayerScript playerScript;
-    [SerializeField] private SpriteChanger[] spriteChangers;
+    [SerializeField] private HealthSpriteChanger[] spriteChangers;
     [SerializeField] private PannelHideNShowScript pannelHideNShow;
     [SerializeField] private GameObject enemy3D;
     [SerializeField] private Text enemyDamageToPlayer;

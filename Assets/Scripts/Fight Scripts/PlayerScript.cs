@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField] private SpriteChanger[] spriteChangers;
+    [SerializeField] private HealthSpriteChanger[] spriteChangers;
     [SerializeField] private PannelHideNShowScript pannelHideNShow;
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private int PlayerHealth = 5;

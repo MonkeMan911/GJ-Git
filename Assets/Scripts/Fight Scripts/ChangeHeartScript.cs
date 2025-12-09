@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpriteChanger : MonoBehaviour
+public class HealthSpriteChanger : MonoBehaviour
 {
     [SerializeField] private Texture newSprite;
     [SerializeField] private Texture defaultSprite;
