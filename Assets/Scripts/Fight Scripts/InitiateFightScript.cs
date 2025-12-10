@@ -6,6 +6,7 @@ public class InitiateFightScript : MonoBehaviour
     [SerializeField] private Transform enemy;
     [SerializeField] private Transform player;
     [SerializeField] private CameraSwitcher cameraSwitcher;
+    [SerializeField] private MonologueFTScript monologueFTScript;
 
     private bool hasSwitched = false;
 
@@ -23,9 +24,15 @@ public class InitiateFightScript : MonoBehaviour
                 Debug.Log("Enemy + Player is inside collider index: " + i + " (" + positions[i].name + ")");
                 hasSwitched = true;
                 TurnManager.Instance.StartBattle();
+
+                // Check PlayerPrefs flag instead of local bool
+                if (PlayerPrefs.GetInt("MonologuePlayed", 0) == 0)
+                {
+                    monologueFTScript.FTBook.SetActive(true);
+                    monologueFTScript.StartMonologue();
+                }
                 break;
             }
-
         }
     }
 }

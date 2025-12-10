@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class MonologueMTScript : MonoBehaviour
 {
-    [SerializeField] private DisableSingularGOScript disableSingularGOScript;
+    [SerializeField] private DisableGameObjectsScript dGameObjects;
 
     public TextMeshProUGUI textComp;
     public string[] lines;
@@ -20,9 +20,28 @@ public class MonologueMTScript : MonoBehaviour
 
     void Start()
     {
+        if (PlayerPrefs.GetInt("TutorialPlayed", 0) == 1)
+        {
+            gameObject.SetActive(false);
+            TriggerAllEvents();
+            return;
+        }
+
+        PlayerPrefs.SetInt("TutorialPlayed", 1);
         textComp.text = string.Empty;
         StartMonologue();
-        disableSingularGOScript.DisableSingleObject();
+        dGameObjects.Disable(0);
+    }
+
+    void TriggerAllEvents()
+    {
+        for (int i = 0; i < lineEvents.Length; i++)
+        {
+            if (lineEvents[i] != null)
+            {
+                lineEvents[i].Invoke();
+            }
+        }
     }
 
     void StartMonologue()

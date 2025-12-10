@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class MonologueFTScript : MonoBehaviour
 {
-    [SerializeField] private DisableSingularGOScript disableSingularGOScript;
-
+    [SerializeField] private DisableGameObjectsScript dGameObjects;
+    public GameObject FTBook;
     public TextMeshProUGUI textComp;
     public string[] lines;
     public float[] lineDurations; // duration for each line
@@ -20,12 +20,42 @@ public class MonologueFTScript : MonoBehaviour
 
     void Start()
     {
+        if (PlayerPrefs.GetInt("MonologuePlayed", 0) >= 1)
+        {
+            audioSource.Stop();              // Stop any playing audio
+            audioSource.enabled = false;     // Disable the AudioSource entirely
+            TriggerAllEvents();
+            gameObject.SetActive(false);     // Hide the monologue object
+            StopAllCoroutines();
+            return;
+        }
+
+        PlayerPrefs.SetInt("MonologuePlayed", 1);
+        PlayerPrefs.Save();
+
         textComp.text = string.Empty;
-        StartMonologue();
-        disableSingularGOScript.DisableSingleObject();
+        dGameObjects.Disable(0);
+        dGameObjects.Disable(1);
+        dGameObjects.Disable(2);
+        dGameObjects.Disable(3);
+        dGameObjects.Disable(4);
+        dGameObjects.Disable(5);
+        dGameObjects.Disable(6);
     }
 
-    void StartMonologue()
+
+
+    void TriggerAllEvents()
+    {
+        for (int i = 0; i < lineEvents.Length; i++)
+        {
+            if (lineEvents[i] != null)
+            {
+                lineEvents[i].Invoke();
+            }
+        }
+    }
+    public void StartMonologue()
     {
         index = 0;
         audioSource.Play();
