@@ -3,8 +3,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
 
-public class MonologueScript : MonoBehaviour
+public class MonologueMTScript : MonoBehaviour
 {
+    [SerializeField] private DisableSingularGOScript disableSingularGOScript;
+
     public TextMeshProUGUI textComp;
     public string[] lines;
     public float[] lineDurations; // duration for each line
@@ -20,6 +22,7 @@ public class MonologueScript : MonoBehaviour
     {
         textComp.text = string.Empty;
         StartMonologue();
+        disableSingularGOScript.DisableSingleObject();
     }
 
     void StartMonologue()
