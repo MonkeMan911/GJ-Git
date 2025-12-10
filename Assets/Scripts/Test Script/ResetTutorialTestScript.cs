@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ResetTutorialTestScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool TutNotPlayed;
+    public bool MonoNotPlayed;
     void Start()
     {
         
@@ -13,9 +14,12 @@ public class ResetTutorialTestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) 
+        if (TutNotPlayed == true) 
         {
             PlayerPrefs.SetInt("TutorialPlayed", 0);
+        }
+        if (MonoNotPlayed == true) 
+        {
             PlayerPrefs.SetInt("MonologuePlayed", 0);
         }
     }
