@@ -11,6 +11,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private Text enemyDamageToPlayer;
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private int EnemyHealth = 5;
+    [SerializeField] private GameObject newPathButton;
     public bool IsDead => isDead;
 
     private bool damagedEnemy = false;
@@ -109,6 +110,7 @@ public class EnemyScript : MonoBehaviour
     IEnumerator NextLevelWait()
     {
         yield return new WaitForSeconds(1);
+        newPathButton.SetActive(true);
         Debug.Log("Hid All Comps And Switched to Next Phase");
     }
 
