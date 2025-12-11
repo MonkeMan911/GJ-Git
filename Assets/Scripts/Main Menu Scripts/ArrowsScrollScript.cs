@@ -1,51 +1,85 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
-public class ArrowScrollScript : MonoBehaviour
+public class ArrowUISectionSwitcher : MonoBehaviour
 {
-    [Header("UI Sections (Panels)")]
-    public GameObject[] sections; // Assign in Inspector
-    public Button arrowButton;    // Assign the arrow UI Button
+    [Header("UI Sections (Panels with CanvasGroup)")]
+    public CanvasGroup[] sections;   // Assign in Inspector
+    [Header("Arrow Buttons")]
+    public Button nextArrowButton;   // Assign in Inspector
+    public Button prevArrowButton;   // Assign in Inspector
 
     private int currentIndex = 0;
+    private bool isTransitioning = false;
 
     void Start()
     {
-        // Validate setup
         if (sections == null || sections.Length == 0)
         {
             Debug.LogError("No UI sections assigned!");
             return;
         }
 
-        if (arrowButton == null)
+        if (nextArrowButton == null || prevArrowButton == null)
         {
-            Debug.LogError("Arrow button not assigned!");
+            Debug.LogError("Arrow buttons not assigned!");
             return;
         }
 
         // Show only the first section
-        ShowSection(currentIndex);
+        ShowSectionImmediate(currentIndex);
 
-        // Add click listener
-        arrowButton.onClick.AddListener(SwapSection);
+        // Add listeners
+        nextArrowButton.onClick.AddListener(() => SwapSection(1));
+        prevArrowButton.onClick.AddListener(() => SwapSection(-1));
     }
 
-    void SwapSection()
+    void SwapSection(int direction)
     {
-        // Move to next section
-        currentIndex = (currentIndex + 1) % sections.Length;
-        ShowSection(currentIndex);
+        if (isTransitioning) return;
+
+        int nextIndex = (currentIndex + direction + sections.Length) % sections.Length;
+        StartCoroutine(TransitionSections(currentIndex, nextIndex));
+        currentIndex = nextIndex;
     }
 
-    void ShowSection(int index)
+    IEnumerator TransitionSections(int fromIndex, int toIndex)
     {
-        // Hide all sections
+        isTransitioning = true;
+
+        CanvasGroup from = sections[fromIndex];
+        CanvasGroup to = sections[toIndex];
+
+        to.gameObject.SetActive(true);
+
+        float duration = 0.5f;
+        float t = 0;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float alpha = t / duration;
+
+            from.alpha = 1 - alpha;
+            to.alpha = alpha;
+
+            yield return null;
+        }
+
+        from.alpha = 0;
+        from.gameObject.SetActive(false);
+        to.alpha = 1;
+
+        isTransitioning = false;
+    }
+
+    void ShowSectionImmediate(int index)
+    {
         for (int i = 0; i < sections.Length; i++)
         {
-            if (sections[i] != null)
-                sections[i].SetActive(i == index);
+            sections[i].gameObject.SetActive(i == index);
+            sections[i].alpha = i == index ? 1 : 0;
         }
     }
 }
-
