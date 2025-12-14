@@ -1,0 +1,424 @@
+fileFormatVersion: 2
+guid: e5ea482447ee3c44ca6cf0ea032c4f74
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 403
+        width: 65
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 885fd9f747ad5cf4eaec2222dac09ff5
+      internalID: 378696439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 403
+        width: 65
+        height: 188
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6358c17a072ad41489881604ae28bc4c
+      internalID: 1368875260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 403
+        width: 65
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7ca0439a3cb2e14c8083ab2f3b5fb53
+      internalID: 329972127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 430
+        width: 79
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 338d82ed794a9904a92f0eba4d5a37db
+      internalID: 191659654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 430
+        width: 79
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 930d43293dbdf464fa1da38e5b368c02
+      internalID: 2137465704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 230
+        width: 79
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25748e156f2ba704db6cb6445bf3920e
+      internalID: 629669992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 234
+        width: 77
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae0e72c1a56492a4da43270b8d44d0e5
+      internalID: 521330729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 234
+        width: 77
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0500942e68cfaaf419572697282607d4
+      internalID: -1401589055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 234
+        width: 77
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18e775d6806d4ef498fce9061d93774b
+      internalID: 846087801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 224
+        width: 65
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fbd9d32d8788524290d8478bdf2d9cd
+      internalID: -1787974281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 24
+        width: 65
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d3dd8ffea46f9c44b3c80b3be294b10
+      internalID: -1260701780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bruhloom 2D Sprite Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 3
+        width: 65
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d41953397e4cced4f939b690936794cf
+      internalID: 1966821164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: be7abc1f00760e44c9aba4dbda7243e1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Bruhloom 2D Sprite Sheet_0: 378696439
+      Bruhloom 2D Sprite Sheet_1: 51709289
+      Bruhloom 2D Sprite Sheet_10: 713382571
+      Bruhloom 2D Sprite Sheet_11: 325625057
+      Bruhloom 2D Sprite Sheet_12: 329972127
+      Bruhloom 2D Sprite Sheet_13: -882716491
+      Bruhloom 2D Sprite Sheet_14: 191372313
+      Bruhloom 2D Sprite Sheet_15: 1408365927
+      Bruhloom 2D Sprite Sheet_16: 1870448003
+      Bruhloom 2D Sprite Sheet_17: 1916750461
+      Bruhloom 2D Sprite Sheet_18: 191659654
+      Bruhloom 2D Sprite Sheet_19: 2137465704
+      Bruhloom 2D Sprite Sheet_2: -144851995
+      Bruhloom 2D Sprite Sheet_20: 629669992
+      Bruhloom 2D Sprite Sheet_21: 521330729
+      Bruhloom 2D Sprite Sheet_22: -1401589055
+      Bruhloom 2D Sprite Sheet_23: 846087801
+      Bruhloom 2D Sprite Sheet_24: -1787974281
+      Bruhloom 2D Sprite Sheet_25: -1260701780
+      Bruhloom 2D Sprite Sheet_26: 1966821164
+      Bruhloom 2D Sprite Sheet_27: -955995101
+      Bruhloom 2D Sprite Sheet_28: -298013716
+      Bruhloom 2D Sprite Sheet_29: -1188873960
+      Bruhloom 2D Sprite Sheet_3: -1362699978
+      Bruhloom 2D Sprite Sheet_30: 797424549
+      Bruhloom 2D Sprite Sheet_31: 1856987586
+      Bruhloom 2D Sprite Sheet_4: 1847742350
+      Bruhloom 2D Sprite Sheet_5: 1883110966
+      Bruhloom 2D Sprite Sheet_6: 1368875260
+      Bruhloom 2D Sprite Sheet_7: -1876854099
+      Bruhloom 2D Sprite Sheet_8: 1738725467
+      Bruhloom 2D Sprite Sheet_9: -2133473076
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

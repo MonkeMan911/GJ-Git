@@ -7,6 +7,7 @@ public class PauseGameScript : MonoBehaviour
     private bool isPaused;
     public GameObject pausePanel;
     public FPSCameraScript cameraController;
+    [SerializeField] private AudioManagerScript audioManagerScript;
     void Start()
     {
         
@@ -40,6 +41,7 @@ public class PauseGameScript : MonoBehaviour
         AudioListener.pause = false;
         pausePanel.SetActive(false);
         cameraController.mouseSensitivity = 2f;
+        audioManagerScript.Save();
     }
 
 }
