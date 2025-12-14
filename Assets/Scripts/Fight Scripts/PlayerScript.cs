@@ -91,6 +91,6 @@ public class PlayerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Debug.Log("Hid All Comps And Switched to Next Phase");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

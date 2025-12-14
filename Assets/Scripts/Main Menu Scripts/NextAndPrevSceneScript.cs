@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NextSceneScript : MonoBehaviour
+public class NextAndPrevSceneScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -19,5 +19,9 @@ public class NextSceneScript : MonoBehaviour
     public void LoadTutorial() 
     {
         SceneManager.LoadScene(1);
+    }
+    public void LoadMainMenu() 
+    {
+        SceneManager.LoadScene(0);
     }
 }
