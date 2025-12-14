@@ -2926,6 +2926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1219679966}
   - component: {fileID: 1219679965}
+  - component: {fileID: 1219679967}
   m_Layer: 0
   m_Name: Tut Manager
   m_TagString: Untagged
@@ -2945,6 +2946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f461d922f286dd4ba6fbefc37dfc89d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetTutorialTestScript: {fileID: 1219679967}
 --- !u!4 &1219679966
 Transform:
   m_ObjectHideFlags: 0
@@ -2960,6 +2962,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1219679967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219679964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0358fb53b2e90468ce2c598c18a976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TutNotPlayed: 0
+  MonoNotPlayed: 0
 --- !u!1 &1271150284
 GameObject:
   m_ObjectHideFlags: 0

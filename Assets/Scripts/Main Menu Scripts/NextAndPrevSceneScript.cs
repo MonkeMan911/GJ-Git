@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class NextAndPrevSceneScript : MonoBehaviour
 {
+    [SerializeField] ResetTutorialTestScript resetTutorialTestScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,8 @@ public class NextAndPrevSceneScript : MonoBehaviour
     }
     public void LoadTutorial() 
     {
+        resetTutorialTestScript.TutNotPlayedReset();
+        resetTutorialTestScript.MonoNotPlayedReset();
         SceneManager.LoadScene(1);
     }
     public void LoadMainMenu() 
