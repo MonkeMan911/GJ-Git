@@ -1,30 +1,29 @@
 using UnityEngine;
-using UnityEngine.UI; // Needed for Image
+using UnityEngine.UI; 
 
 public class LoadCharacterPrefsScript : MonoBehaviour
 {
     [Header("Available Character Prefabs")]
-    public GameObject[] characterPrefabs; // Assign prefabs in Inspector
+    public GameObject[] characterPrefabs; 
 
     [Header("Available Character Sprites")]
-    public Sprite[] characterSprites; // Assign sprites in Inspector (same order as prefabs)
+    public Sprite[] characterSprites; 
 
     [Header("Spawn Locations")]
-    public Transform spawnPoint;     // Assign a spawn point in Inspector
-    public Transform fightLocation;  // Assign a fight location in Inspector
+    public Transform spawnPoint;     
+    public Transform fightLocation;  
 
     [Header("UI Display")]
-    public Image characterImage;     // Assign ONE UI Image in Inspector
+    public Image characterImage;    
 
     [Header("Player Root Object")]
-    public Transform playerRoot;     // Assign the Player object (camera rig or parent container)
+    public Transform playerRoot;     
 
     private const string PlayerPrefKey = "SelectedCharacter";
 
     void Start()
     {
-        // Get saved character index
-        int index = PlayerPrefs.GetInt(PlayerPrefKey, 0); // default to 0 if not set
+        int index = PlayerPrefs.GetInt(PlayerPrefKey, 0); 
 
         if (index < 0 || index >= characterPrefabs.Length)
         {
@@ -32,7 +31,7 @@ public class LoadCharacterPrefsScript : MonoBehaviour
             return;
         }
 
-        // --- Spawn the chosen character prefab ---
+
         GameObject player = Instantiate(characterPrefabs[index], spawnPoint.position, spawnPoint.rotation);
 
         // Parent it under the Player root so it moves with camera
@@ -43,10 +42,10 @@ public class LoadCharacterPrefsScript : MonoBehaviour
 
         player.tag = "Player";
 
-        // --- Spawn fighter separately (not parented to player) ---
+
         GameObject fighter = Instantiate(characterPrefabs[index], fightLocation.position, fightLocation.rotation);
 
-        // --- Display the chosen character sprite ---
+
         if (characterImage != null && characterSprites.Length > index && characterSprites[index] != null)
         {
             characterImage.sprite = characterSprites[index];

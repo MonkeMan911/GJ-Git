@@ -12,7 +12,7 @@ public class AudioManagerScript : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("AudioVolume")) 
         {
-            PlayerPrefs.SetFloat("AudioVolume", 100);
+            PlayerPrefs.SetFloat("AudioVolume", 1);
             Load();
         }
         else 
@@ -29,7 +29,8 @@ public class AudioManagerScript : MonoBehaviour
     public void ChangeVolume() 
     {
         AudioListener.volume = AudioSlider.value;
-        audioInt.text = AudioSlider.value.ToString();
+        float percent = AudioSlider.value * 100f;
+        audioInt.text = Mathf.RoundToInt(percent).ToString() + "%";
     }
     public void Save() 
     {
