@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class NextAndPrevSceneScript : MonoBehaviour
 {
     [SerializeField] ResetTutorialTestScript resetTutorialTestScript;
+    private int nextSceneToLoad;
     // Start is called before the first frame update
     void Start()
     {
-        
+        nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     // Update is called once per frame
@@ -26,5 +27,10 @@ public class NextAndPrevSceneScript : MonoBehaviour
     public void LoadMainMenu() 
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void LoadNextLevelHard() 
+    {
+        SceneManager.LoadScene(nextSceneToLoad);
     }
 }

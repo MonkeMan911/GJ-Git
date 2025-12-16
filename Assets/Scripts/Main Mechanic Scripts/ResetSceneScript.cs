@@ -16,6 +16,7 @@ public class ResetSceneScript : MonoBehaviour
     {
         resetTut.TutPlayedReset();
         resetTut.MonoPlayedReset();
-        SceneManager.LoadScene(1);
+        Scene inScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(inScene.name);
     }
 }
