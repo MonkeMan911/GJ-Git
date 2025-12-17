@@ -7,6 +7,7 @@ public class InitiateFightLVLScript : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Vector3 offset;
     [SerializeField] private CameraSwitcher cameraSwitcher;
+    [SerializeField] PlayerThingsScript playerThingsScript;
 
     private bool hasSwitched = false;
     private void Start()
@@ -21,6 +22,7 @@ public class InitiateFightLVLScript : MonoBehaviour
         {
             if (positions[i].bounds.Contains(enemy.position) && positions[i].bounds.Contains(player.position))
             {
+                playerThingsScript.audioS.Stop();
                 cameraSwitcher.DisableCanvasAtIndex(0);
                 cameraSwitcher.SwitchToNextCam();
                 cameraSwitcher.EnableCanvasAtIndex(1);

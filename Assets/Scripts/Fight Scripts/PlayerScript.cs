@@ -6,6 +6,8 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private HealthSpriteChanger[] spriteChangers;
     [SerializeField] private PannelHideNShowScript pannelHideNShow;
+    [SerializeField] AudioSource deathAudio;
+    [SerializeField] AudioClip deathAudioclip;
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private int PlayerHealth = 5;
 
@@ -82,6 +84,7 @@ public class PlayerScript : MonoBehaviour
 
         Debug.Log("Player died.");
         pannelHideNShow.TogglePanel(10);
+        deathAudio.PlayOneShot(deathAudioclip);
         pannelHideNShow.DisableAllPanels();
         StartCoroutine(ResetLevelWait());
     }

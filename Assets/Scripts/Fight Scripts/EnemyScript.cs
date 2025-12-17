@@ -8,6 +8,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private HealthSpriteChanger[] spriteChangers;
     [SerializeField] private PannelHideNShowScript pannelHideNShow;
     [SerializeField] private GameObject enemy3D;
+    [SerializeField] private AudioSource winSource;
+    [SerializeField] private AudioClip winClip;
     [SerializeField] private Text enemyDamageToPlayer;
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private int EnemyHealth = 5;
@@ -100,6 +102,7 @@ public class EnemyScript : MonoBehaviour
         isDead = true;
         StopAllCoroutines();
         Debug.Log("Enemy died.");
+        winSource.PlayOneShot(winClip);
         pannelHideNShow.TogglePanel(9);
         pannelHideNShow.DisableAllPanels();
         enemy3D.SetActive(false);
