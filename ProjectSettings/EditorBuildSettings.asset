@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Path To Oblivion Level 1 Hard.unity
     guid: 94ff6d173c4602b43aa0cfe30e64d549
+  - enabled: 1
+    path: Assets/Scenes/Path To Oblivion Level 1 Impossible.unity
+    guid: 38b4d1d1b2bc1424b93d6b2c2a5936b0
   m_configObjects: {}

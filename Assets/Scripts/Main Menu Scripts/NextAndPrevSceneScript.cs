@@ -6,31 +6,53 @@ using UnityEngine.SceneManagement;
 public class NextAndPrevSceneScript : MonoBehaviour
 {
     [SerializeField] ResetTutorialTestScript resetTutorialTestScript;
-    private int nextSceneToLoad;
-    // Start is called before the first frame update
-    void Start()
-    {
-        nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
-    }
+    [SerializeField] private string[] randomLevels;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void LoadTutorial() 
+    private string lastLoadedScene = null;
+
+    public void LoadTutorial()
     {
         resetTutorialTestScript.TutNotPlayedReset();
         resetTutorialTestScript.MonoNotPlayedReset();
         SceneManager.LoadScene(1);
     }
-    public void LoadMainMenu() 
+
+    public void LoadMainMenu()
     {
         SceneManager.LoadScene(0);
     }
 
-    public void LoadNextLevelHard() 
+    public void LoadNextLevel(string chooseScene)
     {
-        SceneManager.LoadScene(nextSceneToLoad);
+        SceneManager.LoadScene(chooseScene);
+    }
+
+    public void LoadRandomLevel()
+    {
+        if (randomLevels.Length == 0)
+        {
+            Debug.LogWarning("No random levels assigned in Inspector!");
+            return;
+        }
+
+        if (randomLevels.Length == 1)
+        {
+            SceneManager.LoadScene(randomLevels[0]);
+            return;
+        }
+
+        // Build a list of candidates excluding the last loaded scene
+        List<string> candidates = new List<string>(randomLevels);
+        if (lastLoadedScene != null)
+        {
+            candidates.Remove(lastLoadedScene);
+        }
+
+        int index = Random.Range(0, candidates.Count);
+        string randomScene = candidates[index];
+
+        lastLoadedScene = randomScene;
+        Debug.Log("Loading random scene: " + randomScene);
+        SceneManager.LoadScene(randomScene);
     }
 }

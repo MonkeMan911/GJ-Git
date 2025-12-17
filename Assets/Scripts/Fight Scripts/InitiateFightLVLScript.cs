@@ -5,10 +5,14 @@ public class InitiateFightLVLScript : MonoBehaviour
     [SerializeField] private BoxCollider[] positions;
     [SerializeField] private Transform enemy;
     [SerializeField] private Transform player;
+    [SerializeField] private Vector3 offset;
     [SerializeField] private CameraSwitcher cameraSwitcher;
 
     private bool hasSwitched = false;
-
+    private void Start()
+    {
+        TeleportEnemyRandom(Random.Range(1, 9));
+    }
     void Update()
     {
         if (hasSwitched) return; // stop checking once switched
@@ -27,4 +31,11 @@ public class InitiateFightLVLScript : MonoBehaviour
             }
         }
     }
+    public void TeleportEnemyRandom(int index)
+    {
+        // Use the collider’s actual center, not just its transform
+        Vector3 targetPos = positions[index].bounds.center + offset;
+        enemy.transform.position = targetPos;
+    }
+
 }
